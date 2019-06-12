@@ -165,6 +165,21 @@
 </body>
 
 <script>
+
+    window.addEventListener("keypress", function(event){
+        let tone = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+        let pianoKey = document.querySelector(`.pianoKey[data-key="${event.keyCode}"]`);
+        if(!tone) return;
+        tone.currentTime = 0;
+
+        pianoKey.classList.add("pressed");
+        tone.play();
+        setTimeout(() => {
+            pianoKey.classList.remove("pressed");
+        }, 300);
+
+    });
+
 </script>
 
 </html>
